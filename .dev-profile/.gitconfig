@@ -1,0 +1,27 @@
+## Standard git Configuration for Development
+## Copyright (c) 2014 Jaskirat M.S. Rajasansir
+## License BSD, see LICENSE for details
+
+[user]
+	name = Full Name
+	email = email@address.com
+[ui]
+	color = auto
+[diff]
+	tool = vimdiff
+	renames = copies					# Detect renames and file copies
+	mnemonicprefix = true					# Changes diff file prefix based on change (rather than a/ and b/)
+[core]
+	editor = vim
+[alias]
+	lt = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lt2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	up = "!git remote update -p; git merge --ff-only @{u}"	# Safer update from remote
+[push]
+	default = tracking
+[rerere]
+	enabled = true						# "Reuse recorded resolution" - when you resolved a conflict, Git will automatically resolve it if it happens again
+[rebase]
+	stat = true						# Whether to show a diffstat of what changed upstream since the last rebase
+[branch]
+	autosetuprebase = always				# When pulling, always attempt to rebase first rather than merge

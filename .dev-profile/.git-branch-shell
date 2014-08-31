@@ -1,0 +1,27 @@
+## GIT Branch / Tag Terminal Prompt Support
+## Copyright (C) 2014 Jaskirat M.S. Rajasansir
+## License BSD, see LICENSE for details
+
+
+parse_git_branch()
+{
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+parse_git_tag()
+{
+    git describe --tags 2> /dev/null
+}
+
+parse_git_branch_or_tag()
+{
+    local currentGitBranch=`parse_git_branch`
+
+    if [ "$currentGitBranch" == " ((no branch))" ]; then
+        local currentGitBranch="(`parse_git_tag`)"
+    fi
+
+    if [ ! "$currentGitBranch" == "" ]; then
+        echo "$currentGitBranch "
+    fi
+}

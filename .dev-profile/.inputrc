@@ -1,0 +1,12 @@
+## Standard Readline Configuration
+## Copyright (C) 2014 Jaskirat M.S. Rajasansir
+## License BSD, see LICENSE for details
+
+
+set bell-style visible                              # Use a visible bell if one is available
+set completion-query-items 20                       # When user is asked whether the list of possibilities should be displayed
+set editing-mode vi                                 # Use 'vim' mode
+set history-size 0                                  # The number of entries in the history list is not limited
+set show-all-if-ambiguous on                        # Words which have more than one possible completion cause the matches to be listed immediately instead of ringing the bell
+
+

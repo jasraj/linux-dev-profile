@@ -1,0 +1,5 @@
+## Standard .rpmmacros File for RPM Building
+## Copyright (c) 2014 Jaskirat M.S. Rajasansir
+## License BSD, see LICENSE for details
+
+%_topdir %(echo $HOME)/rpmbuild
