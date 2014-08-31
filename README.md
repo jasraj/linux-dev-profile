@@ -34,3 +34,6 @@ ln -s /home/user/git/linux-dev-profile/.dev-profile /home/user/.dev.profile
 ln -s /home/user/git/linux-dev-profile/.vim /home/user/.vim
 echo "source /home/user/linux-dev.profile" >> ~/.bashrc
 ```
+
+
+[![Analytics](https://ga-beacon.appspot.com/UA-54104883-4/linux-dev-profile/README)](https://github.com/jasraj/linux-dev-profile)
