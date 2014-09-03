@@ -9,6 +9,9 @@
 
 set -o vi                                                       # vi editing mode
 set -u                                                          # Unbound variables throw error
+                                                                # NOTE: You might experience strange errors on tab-completion with
+                                                                # this command. It's likely a git completion script causing trouble
+                                                                # Comment this line out or run set +u to disable
 
 stty stop 'undef'                                               # Disable annoying CTRL+S stop-flow signal
 
