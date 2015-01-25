@@ -61,11 +61,7 @@ set number                                          " line numbers
 syntax on                                           " enable syntax highlighting
 set cursorline                                      " Highlight the current line the cursor is on
 set wildmenu                                        " Show all matches for auto-completion
-if has('gui_running')                               " for solarized colourscheme
-  set background=light
-else
-  set background=dark
-endif
+set background=dark                                 " for solarized colour-scheme
 colorscheme solarized
 
 set title                                          " Show title in window titlebar
