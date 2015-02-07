@@ -8,6 +8,27 @@ This repo provides a bunch of dot-files that I find useful during development on
 
 ##### `linux-dev.profile`
 
+By default, if you attempt to access a variable that is not declared, `bash` won't mind and just return that the variable is empty:
+
+```
+jas@ubuntu:~> echo $VAR_NO_EXIST
+
+jas@ubuntu:~> 
+```
+
+For me, this behaviour is annoying and bad practice. Fortunately you can tell `bash` to error if it finds a variable referenced that doesn't exist with `set -u`:
+
+```
+jas@ubuntu:~> set -u
+jas@ubuntu:~> echo $VAR_NO_EXIST
+bash: VAR_NO_EXIST: unbound variable
+jas@ubuntu:~> 
+jas@ubuntu:~> echo $?
+1
+```
+
+*However*, if you enable this in your profile, there is a good chance that some of the auto-complete scripts that you use **will** break with this enabled. *So use at your own risk!* I've commented out the `set` in the committed file.
+
 ##### `.ackrc`
 
 ##### `.git-branch-shell`
