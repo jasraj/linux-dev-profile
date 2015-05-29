@@ -14,11 +14,13 @@ set -o vi                                                       # vi editing mod
 
 stty stop 'undef'                                               # Disable annoying CTRL+S stop-flow signal
 
-umask 033                                                       # Allow group and other to read your files (u=rw,g=r,o=r)
+umask 027                                                       # Allow only group to read / execute your files (u=rwx,g=rx,o=)
                                                                 #   Use 'umask 077' to only allow read / write access for yourself
 
 export EDITOR=vim                                               # Use 'vim' edit mode
-export HISTCONTROL=ignoredups                                   # Lines matching the previous history entry are not saved
+export HISTCONTROL=ignoreboth                                   # Lines matching the previous history entry and commands beginning 
+                                                                # withspace are not saved
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"             # Ensure command history is saved after every command
 
 
 # Application-specific settings

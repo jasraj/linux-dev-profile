@@ -11,7 +11,8 @@ readonly INSTALL_FROM=$1
 
 readonly FILES_TO_ROOT=( .gitconfig .inputrc .rpmmacros .screenrc .ackrc )
 
-readonly DEFAULT_INSTALL_FROM=~/git/linux-dev-profile
+readonly DEFAULT_INSTALL_FROM=$PROGDIR
+
 
 set -eu
 
@@ -25,6 +26,16 @@ main()
         local source=$INSTALL_FROM
     fi
 
+    if [[ ! -d $source ]]; then
+        echoErr "Installation source does not exist!"
+        echoErr "\tSource: $source\n"
+        echoErr "Please specify a valid installation source"
+
+        exit 1
+    fi
+
+    echoInf "Installation source folder: $source\n"
+
     createSymLink ${source}/.dev-profile ~/.dev-profile
     createSymLink ${source}/.vim ~/.vim
 
@@ -37,7 +48,7 @@ main()
 
     appendToBashRc
 
-	echoInf "\nINSTALL COMPLETE\n"
+    echoInf "\nINSTALL COMPLETE\n"
 }
 
 createSymLink()
