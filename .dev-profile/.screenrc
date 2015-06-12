@@ -2,6 +2,8 @@
 ## Copyright (C) Jaskirat M.S. Rajasansir
 ## License BSD, see LICENSE for details
 
+shell -$SHELL
+
 startup_message off                                                     #  Switch off startup message
 autodetach on                                                           #  Auto-detach on hangup
 defscrollback 10000                                                     #  More scrollback
