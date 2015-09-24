@@ -24,6 +24,8 @@ set smartcase                                       " But enable it again if an 
 set wrapscan                                        " Searches wrap around EOF
 set gdefault                                        " Applies substitutions globally on lines by default
 set autoread                                        " Reads a file automatically when changed externally
+set fileformats=unix,dos                            " Prefer UNIX file format over DOS (for Windows)
+set fileformat=unix                                 " Default to UNIX (for Windows)
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
