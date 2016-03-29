@@ -3,8 +3,8 @@
 ## License BSD, see LICENSE for details
 
 [user]
-	name = Full Name
-	email = email@address.com
+	name = Jaskirat Rajasansir
+	email = jas@buabook.com
 [ui]
 	color = auto
 [diff]
@@ -25,3 +25,11 @@
 	stat = true						# Whether to show a diffstat of what changed upstream since the last rebase
 [branch]
 	autosetuprebase = always				# When pulling, always attempt to rebase first rather than merge
+
+# Ensure all incoming objects are validated against hash (https://twitter.com/SamirTalwar/status/694490383145918464)
+[transfer]
+    fsckobjects = true
+[fetch]
+    fsckobjects = true
+[receive]
+    fsckobjects = true
