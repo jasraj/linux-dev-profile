@@ -1,0 +1,15 @@
+// Visual Studio Code - User Settings
+// Copyright (c) 2016 Jaskirat M.S. Rajasansir
+
+{
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.eol": "\n",
+
+    "editor.wrappingColumn": 0,
+    "editor.renderIndentGuides": true,
+    "editor.mouseWheelZoom": true,
+
+    // This opens "git bash" in the internal terminal as opposed to "cmd"
+    "terminal.integrated.shell.windows": "C:\\Users\\jasra_000\\AppData\\Local\\Programs\\Git\\bin\\bash.exe"
+}
