@@ -25,6 +25,8 @@
 	stat = true						# Whether to show a diffstat of what changed upstream since the last rebase
 [branch]
 	autosetuprebase = always				# When pulling, always attempt to rebase first rather than merge
+[tag]
+	sort = v:refname
 
 # Ensure all incoming objects are validated against hash (https://twitter.com/SamirTalwar/status/694490383145918464)
 [transfer]
