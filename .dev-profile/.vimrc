@@ -6,13 +6,13 @@
 " *** INIT ***
 set nocompatible
 if ! len(glob("~/.vim_backup/"))
-  silent !mkdir ~/.vim_backup > /dev/null 2&1
+  silent !mkdir ~/.vim_backup > /dev/null 2>&1
+endif
+if ! len(glob("~/.vim_undo/"))
+  silent !mkdir ~/.vim_undo > /dev/null 2>&1
 endif
 
 call pathogen#infect()                             " Pathogen load plugins
-set t_Co=256
-let g:solarized_termcolors=256                     " For solarized colourscheme
-let g:solarized_termtrans=1
 
 
 " *** GENERAL SETTINGS ***
@@ -47,6 +47,7 @@ set writebackup                                     " Make a backup of the origi
 
 set undolevels=1000                                 " A lot of undo levels
 set undofile                                        " Undo previous actions even after you close and reopen a file
+set undodir=~/.vim_undo                             " Put all undo files in one place
 
 
 " *** TEXT FORMATTING - TABS ***
@@ -58,6 +59,10 @@ set autoindent                                      " Copy indent from previous 
 
 
 " *** UI ***
+set t_Co=256                                       " Ensure vim renders in 256-color mode
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+
 set ruler                                           " show where we are
 set number                                          " line numbers
 syntax on                                           " enable syntax highlighting
@@ -75,6 +80,19 @@ set laststatus=2                                   " Always show status line
 set visualbell                                     " Disable audio bell, use visual instead
 set scrolloff=5                                    " Start scrolling 5 lines before top/bottom
 set sidescrolloff=5                                " Start scrolling 5 chars befrore left/right
+
+
+" *** airline ***
+if len(getbufinfo({'buflisted':1})) > 1            " Only show tab list if more than one file open
+  let g:airline#extensions#tabline#enabled = 1
+endif
+
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+" *** gitgutter ***
+let g:gitgutter_signs = 0
+highlight clear SignColumn
+let g:gitgutter_map_keys = 0
 
 
 " *** KEY MAPPING ***
@@ -95,36 +113,14 @@ map <F8> :tabp<CR>
 nnoremap j gj
 nnoremap k gk
 
-let mapleader = ","                                 " Bring the leader key closer to the home row
 
+" *** Mappings ***
+let mapleader = ","                                                            " Bring the leader key closer to the home row
 " Turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-
+" Show tab / psace issues
+nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 " List all open files
-map <leader>ls :buffers<CR>
-
-
-" *** Status Line Formatting ** 
-" Default the statusline to green when entering Vim
-hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
-
-" Formats the statusline
-set statusline=\ %f                                 " File name
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},   " File encoding
-set statusline+=\ %{&ff}]                           " File format
-set statusline+=\ %y                                " Filetype
-set statusline+=\ %m                                " Modified flag
-set statusline+=\%r                                 " Read only flag
-set statusline+=\ %=                                " Align left
-set statusline+=\ %{HasPaste()}                     " Have we enabled paste mode?
-set statusline+=\ Line:%l/%L[%p%%]                  " Line X of Y [percent of file]
-set statusline+=\ Col:%c\                           " Current column
-
-
-" *** Functions ***
-function! HasPaste()
-    if &paste
-        return '[PASTE MODE]'
-    en
-    return ''
-endfunction
+nnoremap <leader>ls :buffers<CR>
+" Show git diff summary
+nnoremap <leader>gd :GitGutterSignsToggle<CR>
